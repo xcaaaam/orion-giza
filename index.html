@@ -290,6 +290,13 @@
   footer{border-top:1px solid var(--line);padding:26px 22px 60px;text-align:center}
   footer p{font-size:12px;color:var(--ink-faint);max-width:60ch;margin:0 auto 8px}
   .disc{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em}
+  .brandmark{margin:26px auto 0;padding-top:20px;border-top:1px solid var(--line);max-width:60ch;
+    font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--ink-faint);display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+  .brandmark .bm-star{color:var(--gold)}
+  .brandmark .sep{opacity:.4}
+  .brandmark a{color:var(--gold);border-bottom:0}
+  .brandmark a:hover{color:var(--gold-soft)}
 
   @media (max-width:560px){
     .ledger{grid-template-columns:1fr}
@@ -480,6 +487,7 @@
 <footer>
   <p class="disc">Simulación con fines educativos. Posiciones a escala relativa, no a escala física absoluta entre cielo y tierra.</p>
   <p>La Teoría de la Correlación de Orión es una hipótesis debatida, no un consenso académico. Esta pieza la presenta junto a sus críticas para que juzgues con los datos a la vista.</p>
+  <p class="brandmark"><span class="bm-star">✦</span> Product of Secen Sides <span class="sep">·</span> by <a href="https://github.com/xcaaaam" target="_blank" rel="noopener">@xcaaaam</a></p>
 </footer>
 
 <script>

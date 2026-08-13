@@ -12,9 +12,30 @@ Es una sola página HTML autónoma, sin dependencias externas, con todo el 3D y 
 - **Patrones.** Un menú inferior con cuatro simulaciones que se proyectan desde abajo con un efecto de holograma: el ajuste geométrico y el espejo, el desvío de la tercera pieza, el ángulo de 17° contra 45°, y la analogía de la Vía Láctea con el Nilo. Cada una trae su veredicto honesto.
 - **Análisis.** Debajo, un ensayo con los datos crudos, la crítica científica y los criterios de filtrado.
 
-## Cómo verlo
+## Verlo en línea
 
-Abre `index.html` en cualquier navegador moderno. No requiere servidor ni instalación.
+Sitio publicado con GitHub Pages: **https://xcaaaam.github.io/orion-giza/**
+
+O abre `index.html` directamente en cualquier navegador moderno. No requiere servidor ni instalación.
+
+## Editar y actualizar el sitio
+
+Todo vive en un solo archivo, `index.html`. Para publicar cambios:
+
+1. Edita `index.html`.
+2. Ejecuta el script de publicación:
+
+   ```bash
+   ./publish.sh "describe tu cambio"
+   ```
+
+Eso hace el commit y el push. GitHub Pages reconstruye el sitio solo en aproximadamente un minuto y la URL de arriba queda actualizada.
+
+Si prefieres a mano:
+
+```bash
+git add -A && git commit -m "tu mensaje" && git push
+```
 
 ## Fuentes de datos
 
