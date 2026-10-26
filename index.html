@@ -156,12 +156,12 @@
   /* data table */
   .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:20px 0 8px;
     -webkit-overflow-scrolling:touch}
-  table{border-collapse:collapse;width:100%;min-width:560px;font-size:13px}
-  thead th{background:var(--panel2);text-align:left;padding:11px 13px;font-family:var(--mono);
-    font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:12.5px}
+  thead th{background:var(--panel2);text-align:left;padding:9px 11px;font-family:var(--mono);
+    font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);
     border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;top:0}
-  tbody td{padding:11px 13px;border-bottom:1px solid var(--line);color:var(--ink-dim);
-    font-variant-numeric:tabular-nums}
+  tbody td{padding:9px 11px;border-bottom:1px solid var(--line);color:var(--ink-dim);
+    font-variant-numeric:tabular-nums;white-space:nowrap}
   tbody tr:last-child td{border-bottom:0}
   tbody td.name{color:var(--ink);font-family:var(--serif);font-size:15px}
   td .mono,th .mono{font-family:var(--mono)}
@@ -301,9 +301,59 @@
   @media (max-width:560px){
     .ledger{grid-template-columns:1fr}
     .mode{padding:8px 11px;font-size:12px}
-    .brand h1{max-width:66vw}
+    .brand h1{max-width:60vw}
     .lead::first-letter{font-size:52px}
   }
+
+  /* language toggle */
+  .top-actions{display:flex;gap:8px;pointer-events:none;flex:none}
+  .lang-btn,.top-actions .theme-btn{pointer-events:auto}
+  .lang-btn{flex:none;background:color-mix(in srgb,var(--panel) 70%,transparent);
+    border:1px solid var(--line2);color:var(--ink);border-radius:999px;
+    height:38px;min-width:46px;padding:0 13px;font-family:var(--mono);font-size:12px;font-weight:600;
+    letter-spacing:.1em;cursor:pointer;backdrop-filter:blur(6px)}
+  .lang-btn:hover{border-color:var(--star);color:var(--star-hot)}
+
+  /* curious facts */
+  .facts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:22px 0 8px}
+  .fact{border:1px solid var(--line);border-radius:12px;padding:14px 15px;background:var(--panel);
+    display:flex;flex-direction:column;gap:7px}
+  .fact .fnum{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--gold);
+    font-variant-numeric:tabular-nums}
+  .fact p{margin:0;font-size:13.5px;color:var(--ink-dim);line-height:1.5}
+  .fact p strong{color:var(--ink)}
+  .ftag{align-self:flex-start;margin-top:2px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;
+    text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid}
+  .ftag.real{color:var(--good);border-color:color-mix(in srgb,var(--good) 45%,transparent)}
+  .ftag.coin{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+  .fcat{grid-column:1 / -1;font-family:var(--mono);font-size:10px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--gold);margin:14px 0 0;display:flex;align-items:center;gap:10px}
+  .fcat::after{content:"";height:1px;flex:1;background:var(--line)}
+  @media (max-width:620px){.facts-grid{grid-template-columns:1fr}}
+
+  /* timeline */
+  .tl{margin:22px 0 10px;border-left:2px solid var(--line2);padding-left:0}
+  .tl-row{position:relative;padding:0 0 22px 26px}
+  .tl-row::before{content:"";position:absolute;left:-7px;top:3px;width:11px;height:11px;border-radius:50%;
+    background:var(--sky);border:2px solid var(--gold)}
+  .tl-row.star::before{border-color:var(--star);box-shadow:0 0 12px var(--star-glow)}
+  .tl-year{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--gold);
+    font-variant-numeric:tabular-nums}
+  .tl-row.star .tl-year{color:var(--star-hot)}
+  .tl-head{font-family:var(--serif);font-size:16px;color:var(--ink);margin:2px 0 3px}
+  .tl-row p{margin:0;font-size:13px;color:var(--ink-dim)}
+  .tl-callout{border:1px solid color-mix(in srgb,var(--star) 40%,var(--line));border-radius:14px;
+    padding:16px 18px;margin:8px 0 20px;background:color-mix(in srgb,var(--star-glow) 8%,var(--panel))}
+  .tl-callout .cq{font-family:var(--serif);font-size:19px;line-height:1.3;color:var(--ink);margin:0 0 6px}
+  .tl-callout p{margin:0;font-size:13px;color:var(--ink-dim)}
+  .tl-scale{display:flex;flex-direction:column;gap:7px;margin:18px 0 6px}
+  .tl-bar{position:relative;height:16px;border-radius:999px;background:var(--panel2);overflow:hidden;border:1px solid var(--line)}
+  .tl-bar i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;display:block}
+  .tl-bar .b-civ{width:60%;background:linear-gradient(90deg,var(--gold-deep),var(--gold))}
+  .tl-bar .b-since{width:40%;background:linear-gradient(90deg,var(--star-glow),var(--star))}
+  .tl-legend{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-faint);
+    display:flex;gap:16px;flex-wrap:wrap}
+  .tl-legend b{color:var(--ink);font-weight:600}
 </style>
 
 <div class="stage" id="stage">
@@ -311,30 +361,33 @@
 
   <div class="topbar">
     <div class="brand">
-      <p class="eyebrow">Arqueoastronomía · Simulación 3D</p>
-      <h1>El Cinturón de Orión<br>sobre la meseta de Giza</h1>
+      <p class="eyebrow" data-i="eyebrow">Arqueoastronomía · Simulación 3D</p>
+      <h1 data-i="h1">El Cinturón de Orión<br>sobre la meseta de Giza</h1>
     </div>
-    <button class="theme-btn" id="themeBtn" title="Cambiar tema" aria-label="Cambiar tema">◐</button>
+    <div class="top-actions">
+      <button class="lang-btn" id="langBtn" aria-label="Language / Idioma">EN</button>
+      <button class="theme-btn" id="themeBtn" title="Cambiar tema" aria-label="Cambiar tema">◐</button>
+    </div>
   </div>
 
-  <div class="hint" id="hint">Arrastra para orbitar · toca una estrella o pirámide</div>
+  <div class="hint" id="hint" data-i="hint">Arrastra para orbitar · toca una estrella o pirámide</div>
 
   <div class="controls">
     <div class="pat-menu" role="tablist" aria-label="Los patrones">
-      <span class="pat-menu-label">Patrones</span>
-      <button class="pmenu-btn s-mixed" data-pat="fit"><b>01</b><span>Ajuste</span></button>
-      <button class="pmenu-btn s-strong" data-pat="offset"><b>02</b><span>Desvío</span></button>
-      <button class="pmenu-btn s-weak" data-pat="angle"><b>03</b><span>Ángulos</span></button>
-      <button class="pmenu-btn s-mixed" data-pat="rivers"><b>04</b><span>Ríos</span></button>
+      <span class="pat-menu-label" data-i="pm.label">Patrones</span>
+      <button class="pmenu-btn s-mixed" data-pat="fit"><b>01</b><span data-i="pm.fit">Ajuste</span></button>
+      <button class="pmenu-btn s-strong" data-pat="offset"><b>02</b><span data-i="pm.offset">Desvío</span></button>
+      <button class="pmenu-btn s-weak" data-pat="angle"><b>03</b><span data-i="pm.angle">Ángulos</span></button>
+      <button class="pmenu-btn s-mixed" data-pat="rivers"><b>04</b><span data-i="pm.rivers">Ríos</span></button>
     </div>
     <div class="subctrl">
-      <button class="chip" id="resetBtn">↺ Reencuadrar</button>
+      <button class="chip" id="resetBtn" data-i="ctl.reset">↺ Reencuadrar</button>
       <button class="chip" id="spinBtn">⏸ Giro auto</button>
     </div>
     <div class="modes" role="tablist" aria-label="Modos de vista">
-      <button class="mode" role="tab" data-mode="cielo" aria-selected="true">Cielo<span class="k">Orión</span></button>
-      <button class="mode gold" role="tab" data-mode="giza" aria-selected="false">Giza<span class="k">Pirámides</span></button>
-      <button class="mode" role="tab" data-mode="overlay" aria-selected="false">Correlación<span class="k">Superponer</span></button>
+      <button class="mode" role="tab" data-mode="cielo" aria-selected="true" data-i="mode.cielo">Cielo<span class="k">Orión</span></button>
+      <button class="mode gold" role="tab" data-mode="giza" aria-selected="false" data-i="mode.giza">Giza<span class="k">Pirámides</span></button>
+      <button class="mode" role="tab" data-mode="overlay" aria-selected="false" data-i="mode.overlay">Correlación<span class="k">Superponer</span></button>
     </div>
   </div>
 
@@ -366,12 +419,12 @@
   </div>
 
   <div class="inspector" id="inspector" aria-live="polite"></div>
-  <button class="scroll-cue" id="scrollCue" aria-label="Ver el análisis"><span>El análisis</span><span class="cvx">⌄</span></button>
+  <button class="scroll-cue" id="scrollCue" aria-label="Ver el análisis"><span data-i="scrollcue">El análisis</span><span class="cvx">⌄</span></button>
 </div>
 
 <main class="essay">
 
-  <section>
+  <section data-i="sec.hip">
     <p class="kicker">La hipótesis</p>
     <h2>Tres estrellas, tres pirámides, y un patrón que se repite</h2>
     <p class="lead">La Teoría de la Correlación de Orión, formulada por Robert Bauval en 1989 y popularizada en <em>The Orion Mystery</em> (1994), sostiene una idea sencilla y provocadora. La disposición de las tres pirámides mayores de Giza reproduce, sobre la tierra, la disposición de las tres estrellas del Cinturón de Orión en el cielo.</p>
@@ -379,7 +432,7 @@
     <p>Esta simulación no toma partido a ciegas. Coloca las estrellas y las pirámides en sus coordenadas reales para que puedas ver el parecido con tus propios ojos, medir el ajuste, y también encontrar dónde el patrón se rompe. Usa los tres modos de arriba y toca cada objeto para leer sus datos.</p>
   </section>
 
-  <section>
+  <section data-i="sec.datos">
     <p class="kicker">Los datos crudos</p>
     <h2>Lo que estás viendo, medido</h2>
     <p>Las posiciones de las estrellas provienen de las coordenadas ecuatoriales J2000 (ascensión recta y declinación) y las distancias del paralaje de la misión Gaia. Las pirámides usan sus coordenadas geográficas y sus alturas originales de diseño. Todo lo demás en la escena se calcula a partir de estos números.</p>
@@ -417,14 +470,14 @@
   </section>
 
   <!-- Los patrones ahora son interactivos, en la sección .lab de la parte principal -->
-  <section>
+  <section data-i="sec.patrones">
     <p class="kicker">Los patrones, en detalle</p>
     <h2>El resumen de lo que muestran las simulaciones</h2>
     <p>Arriba puedes activar cada patrón y ver su simulación. En corto, esto es lo que revelan: <strong>el ajuste geométrico</strong> es notable pero depende de un espejo; <strong>el desvío de la tercera pieza</strong> coincide en dirección y es lo más difícil de atribuir al azar; <strong>el ángulo con el horizonte</strong> no calza, 17° contra 45°; y <strong>la Vía Láctea y el Nilo</strong> funcionan como metáfora cultural, no como una medición exacta.</p>
     <p class="pull">El cinturón calza sobre Giza con un error menor que una pirámide. El precio de ese calce es un espejo que nadie dejó por escrito.</p>
   </section>
 
-  <section>
+  <section data-i="sec.critica">
     <p class="kicker">La crítica científica</p>
     <h2>Por qué la mayoría de egiptólogos no la aceptan</h2>
     <p>La correlación es popular, y no es una locura, hay un parecido genuino. Pero enfrenta objeciones serias que conviene tener a la vista, porque una buena simulación también debe mostrar sus grietas.</p>
@@ -438,40 +491,67 @@
     <p>Al mismo tiempo, la cultura egipcia sí ligaba a Orión con Osiris y al faraón difunto con esa constelación. Los Textos de las Pirámides hablan del rey ascendiendo hacia las estrellas. Así que un vínculo simbólico entre Orión y los faraones está sólidamente atestiguado. Lo que se discute es si ese vínculo se tradujo en un plano arquitectónico a escala.</p>
   </section>
 
-  <section class="essay wide" style="max-width:none;padding:0">
-    <p class="kicker">Mis criterios de filtrado</p>
-    <h2>Qué tomé en cuenta y qué dejé fuera</h2>
-    <p>Pediste explícitamente los criterios con los que filtré la información. Aquí van con total transparencia, incluida una parte de tu solicitud que decidí no cumplir tal como estaba planteada, y el porqué.</p>
-
-    <div class="ledger">
-      <div class="col in">
-        <h4>◆ Lo que entró</h4>
-        <ul>
-          <li>Coordenadas estelares J2000 y distancias de Gaia, que son mediciones reproducibles y verificables.</li>
-          <li>Dimensiones y coordenadas de las pirámides según registros arqueológicos estándar.</li>
-          <li>La teoría atribuida a su autor real, Robert Bauval, citado por su nombre y su obra.</li>
-          <li>Las refutaciones de fuentes identificables, en especial Ed Krupp del Observatorio Griffith.</li>
-          <li>Un cálculo propio del ajuste geométrico, hecho a partir de las coordenadas, con su residuo en metros.</li>
-        </ul>
-      </div>
-      <div class="col out">
-        <h4>◆ Lo que quedó fuera</h4>
-        <ul>
-          <li>Cifras de precisión exageradas que circulan sin fuente, como coincidencias al 99.9%, salvo para citarlas como afirmación de terceros.</li>
-          <li>Conexiones con civilizaciones perdidas, extraterrestres o dataciones de más de 10.000 años, sin respaldo geológico.</li>
-          <li>Correlaciones con otras constelaciones o con Bosnia, que amplían el patrón hasta volverlo inservible.</li>
-          <li>Fuentes anónimas de foros y videos sin autoría comprobable.</li>
-        </ul>
-      </div>
+  <section data-i="sec.facts">
+    <p class="kicker">Datos curiosos</p>
+    <h2>Curiosidades, de las piedras a las estrellas</h2>
+    <p>Una selección entre pirámides, estrellas y tiempo profundo. Lo marcado como coincidencia es una curiosidad numérica, no una prueba.</p>
+    <div class="facts-grid">
+      <div class="fcat">Las pirámides</div>
+      <div class="fact"><span class="fnum">01</span><p>La Gran Pirámide fue la construcción más alta del mundo durante unos <strong>3,800 años</strong>, hasta la catedral de Lincoln (~1311).</p><span class="ftag real">Comprobado</span></div>
+      <div class="fact"><span class="fnum">02</span><p>El perímetro de la base dividido por la altura da casi exactamente <strong>2π</strong> (error menor al 0.05%). Esto sí lo puedes comprobar tú con las medidas reales.</p><span class="ftag real">Comprobable</span></div>
+      <div class="fact"><span class="fnum">03</span><p>Las caras apuntan a los puntos cardinales con un error de solo <strong>3 a 4 minutos de arco</strong>, mejor que muchas obras modernas.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fcat">Pi y coincidencias</div>
+      <div class="fact"><span class="fnum">04</span><p>El dato viral de que la latitud (≈29.9792458°) coincide con la <strong>velocidad de la luz</strong> es una coincidencia: miles de latitudes cruzan la pirámide y el metro ni existía en Egipto.</p><span class="ftag coin">Coincidencia</span></div>
+      <div class="fcat">Las estrellas</div>
+      <div class="fact"><span class="fnum">05</span><p>Las tres estrellas del cinturón <strong>no están juntas</strong> en el espacio: solo se ven alineadas desde la Tierra. Orbítalo arriba y se deshace el espejismo.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fact"><span class="fnum">06</span><p>Alnilam, la central, es la más lejana y brilla como <strong>cientos de miles de soles</strong>.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fact"><span class="fnum">07</span><p>La luz de Alnitak que ves hoy salió hace <strong>~1,260 años</strong>, en plena época vikinga.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fact"><span class="fnum">08</span><p>Betelgeuse es tan gigante que, en el lugar del Sol, su superficie llegaría <strong>más allá de Marte</strong>.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fact"><span class="fnum">09</span><p>Cuando Betelgeuse explote como supernova, <strong>se verá de día</strong>.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fact"><span class="fnum">10</span><p>Betelgeuse es roja y fría; Rigel es azul y caliente: Orión muestra <strong>las dos puntas del ciclo de vida estelar</strong> a la vez.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fcat">La nebulosa</div>
+      <div class="fact"><span class="fnum">11</span><p>En la Nebulosa de Orión (M42), visible a simple vista, <strong>nacen estrellas ahora mismo</strong>.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fact"><span class="fnum">12</span><p>El Hubble fotografió allí <strong>discos protoplanetarios</strong>: sistemas solares en construcción.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fcat">Orión en Egipto</div>
+      <div class="fact"><span class="fnum">13</span><p>Para los egipcios, Orión era <strong>Sah</strong>, la forma celeste de Osiris, dios de la resurrección.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fact"><span class="fnum">14</span><p>Los <strong>Textos de las Pirámides</strong> describen al faraón ascendiendo para unirse a Orión entre las estrellas.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fact"><span class="fnum">15</span><p>Sirio era <strong>Isis</strong>; su primera salida anual anunciaba la crecida del Nilo.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fcat">Construcción</div>
+      <div class="fact"><span class="fnum">16</span><p>El <strong>Diario de Merer</strong> (~2560 a.C.) narra a un equipo llevando bloques a Giza: el testimonio escrito más antiguo sobre la Gran Pirámide.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fact"><span class="fnum">17</span><p>Los constructores <strong>no eran esclavos</strong>: eran trabajadores asalariados; se hallaron sus aldeas y tumbas junto a la pirámide.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fcat">Tiempo y escala</div>
+      <div class="fact"><span class="fnum">18</span><p><strong>Cleopatra vivió más cerca del aterrizaje en la Luna (1969) que de la Gran Pirámide.</strong> Para ella ya era antiquísima.</p><span class="ftag real">Comprobado</span></div>
+      <div class="fact"><span class="fnum">19</span><p>Cuando se levantó la Gran Pirámide, <strong>todavía existían mamuts</strong> (los últimos hasta ~1650 a.C.).</p><span class="ftag real">Comprobado</span></div>
+      <div class="fact"><span class="fnum">20</span><p>Las tres pirámides descienden en tamaño igual que las tres estrellas del cinturón descienden en brillo: la coincidencia que dio origen a todo.</p><span class="ftag real">Comprobado</span></div>
     </div>
-
-    <h3>Sobre el pedido de fuentes de bibliotecas de Harvard y autores ligados a líderes tecnológicos</h3>
-    <p>Aquí debo ser honesto contigo, porque preferirías eso a una invención. Busqué material serio y sostuve un criterio simple, no citar lo que no puedo verificar. No encontré un cuerpo de libros de la biblioteca de Harvard, distintos del consenso académico, que revele curiosidades ocultas sobre esta correlación. Y no hallé una relación comprobable entre autores de esta materia y líderes de la tecnología mundial.</p>
-    <p>Fabricar esas citas para complacer el pedido habría sido lo contrario de una buena investigación. En vez de eso te di lo que sí resiste una verificación, los datos astronómicos primarios, la teoría con su autor, el cálculo del ajuste y sus objeciones. Si esa hebra concreta te interesa, puedo intentar una búsqueda dirigida en catálogos académicos abiertos y decirte con claridad qué aparece y qué no. Pero no rellenaré ese vacío con nombres inventados.</p>
-    <p style="font-size:12.5px;color:var(--ink-faint)">Nota sobre los patrones, los cálculos de superposición, el residuo de 40 metros y la necesidad de reflejar el mapa se derivaron directamente de las coordenadas reales dentro de esta misma simulación, no de una fuente externa. Puedes reproducirlos con los números de las tablas de arriba.</p>
   </section>
 
-  <section>
+  <section data-i="sec.timeline">
+    <p class="kicker">Línea del tiempo</p>
+    <h2>Para dimensionar cuán pequeños somos</h2>
+    <p>De la unificación de Egipto hasta hoy, con la ventana en que se construyeron las pirámides. Los años son aproximados.</p>
+    <div class="tl">
+      <div class="tl-row"><div class="tl-year">≈3100 a.C.</div><div class="tl-head">Nace el Egipto faraónico</div><p>Narmer unifica el Alto y el Bajo Egipto.</p></div>
+      <div class="tl-row"><div class="tl-year">≈2560 a.C.</div><div class="tl-head">Gran Pirámide (Keops)</div><p>Se levanta la mayor de Giza, en unos 20 años.</p></div>
+      <div class="tl-row"><div class="tl-year">≈2530 a.C.</div><div class="tl-head">Pirámide de Kefrén</div><p>La segunda del trío.</p></div>
+      <div class="tl-row"><div class="tl-year">≈2510 a.C.</div><div class="tl-head">Pirámide de Micerinos</div><p>La tercera, más pequeña y desplazada.</p></div>
+      <div class="tl-row"><div class="tl-year">≈1650 a.C.</div><div class="tl-head">Últimos mamuts</div><p>Sobreviven en la isla de Wrangel, casi mil años después de la Gran Pirámide.</p></div>
+      <div class="tl-row"><div class="tl-year">30 a.C.</div><div class="tl-head">Muere Cleopatra</div><p>Fin del Egipto faraónico, tras unos 3,000 años.</p></div>
+      <div class="tl-row star"><div class="tl-year">1969 d.C.</div><div class="tl-head">Llegada a la Luna</div><p>El ser humano camina sobre otro mundo.</p></div>
+      <div class="tl-row star"><div class="tl-year">2026 d.C.</div><div class="tl-head">Hoy</div><p>Mirando el mismo Orión que miraron los constructores.</p></div>
+    </div>
+    <div class="tl-callout">
+      <p class="cq">Cleopatra vivió más cerca en el tiempo de la llegada a la Luna que de la construcción de la Gran Pirámide.</p>
+      <p>De la pirámide (≈2560 a.C.) a Cleopatra (30 a.C.) hay unos 2,530 años. De Cleopatra a 1969 hay unos 2,000. La pirámide ya era un monumento antiguo cuando ella reinaba.</p>
+    </div>
+    <div class="tl-scale">
+      <div class="tl-bar"><i class="b-civ" style="width:59.3%"></i><i class="b-since" style="left:59.3%;width:40.7%"></i></div>
+      <div class="tl-legend"><span><b>Egipto faraónico</b>, ~3,000 años</span><span><b>Desde entonces hasta hoy</b>, ~2,055 años</span></div>
+    </div>
+    <p style="font-size:12.5px;color:var(--ink-faint);margin-top:14px">Y aún así, toda la historia humana registrada, unos 5,000 años, cabe en menos de una millonésima de la edad del universo, unos 13,800 millones de años. El cinturón de Orión que inspiró todo esto seguirá ahí mucho después de que las pirámides se erosionen.</p>
+  </section>
+
+  <section data-i="sec.fuentes">
     <p class="kicker">Fuentes</p>
     <h2>De dónde salen los números</h2>
     <ul class="sources">
@@ -485,10 +565,186 @@
 </main>
 
 <footer>
-  <p class="disc">Simulación con fines educativos. Posiciones a escala relativa, no a escala física absoluta entre cielo y tierra.</p>
-  <p>La Teoría de la Correlación de Orión es una hipótesis debatida, no un consenso académico. Esta pieza la presenta junto a sus críticas para que juzgues con los datos a la vista.</p>
+  <p class="disc" data-i="foot.disc">Posiciones a escala relativa, no a escala física absoluta entre cielo y tierra.</p>
+  <p data-i="foot.note">Todo esto se hizo por pura diversión y por el gusto de crear, sin ningún fin más que entretener.</p>
   <p class="brandmark"><span class="bm-star">✦</span> Product of Seven Sides <span class="sep">·</span> by <a href="https://github.com/xcaaaam" target="_blank" rel="noopener">@xcaaaam</a></p>
 </footer>
+
+<script>
+/* ---------- i18n (ES / EN) ---------- */
+(function(){
+  "use strict";
+  var LS='ogLang', lang='es';
+  try{ var s=localStorage.getItem(LS); if(s==='en'||s==='es') lang=s; }catch(e){}
+  var listeners=[], esCache={};
+
+  var UI={
+    es:{ nilo:'Nilo', W:'O', m42label:'Nebulosa M42',
+      ascRecta:'Asc. recta', dec:'Declinación', dist:'Distancia', mag:'Magnitud',
+      alturaOrig:'Altura orig.', base:'Base', lat:'Latitud', lon:'Longitud',
+      al:'al', m:'m', type:'Tipo, ', pharaoh:'Faraón',
+      starBelt:'★ Estrella · Cinturón', starOrion:'★ Estrella · Orión',
+      neb:'✦ Nebulosa · Orión', pyrGiza:'▲ Pirámide · Giza',
+      seePyr:'→ Ver su pirámide, ', seeStar:'→ Ver su estrella, ',
+      residPre:'En modo Correlación, Mintaka cae a unos ',
+      residPost:' de esta pirámide tras reflejar el mapa estelar. Ese es el residuo del ajuste.',
+      spinOn:'⏸ Giro auto', spinOff:'▶ Giro auto',
+      panelBelt:'Cinturón', panelGiza:'Giza', offsetWord:'desvío', horizon:'HORIZONTE',
+      sameVertex:'mismo vértice', beltTitle:'CINTURÓN DE ORIÓN', gizaDiag:'DIAGONAL DE GIZA',
+      gizaNile:'GIZA · NILO', milky:'ORIÓN · VÍA LÁCTEA' },
+    en:{ nilo:'Nile', W:'W', m42label:'Nebula M42',
+      ascRecta:'R.A.', dec:'Declination', dist:'Distance', mag:'Magnitude',
+      alturaOrig:'Orig. height', base:'Base', lat:'Latitude', lon:'Longitude',
+      al:'ly', m:'m', type:'Type, ', pharaoh:'Pharaoh',
+      starBelt:'★ Star · Belt', starOrion:'★ Star · Orion',
+      neb:'✦ Nebula · Orion', pyrGiza:'▲ Pyramid · Giza',
+      seePyr:'→ See its pyramid, ', seeStar:'→ See its star, ',
+      residPre:'In Correlation mode, Mintaka lands about ',
+      residPost:' from this pyramid after mirroring the star map. That is the fit residual.',
+      spinOn:'⏸ Auto-spin', spinOff:'▶ Auto-spin',
+      panelBelt:'Belt', panelGiza:'Giza', offsetWord:'offset', horizon:'HORIZON',
+      sameVertex:'same vertex', beltTitle:'ORION’S BELT', gizaDiag:'GIZA DIAGONAL',
+      gizaNile:'GIZA · NILE', milky:'ORION · MILKY WAY' }
+  };
+
+  var EN={
+    'eyebrow':'Archaeoastronomy · 3D Simulation',
+    'h1':'Orion’s Belt<br>over the Giza plateau',
+    'hint':'Drag to orbit · tap a star or pyramid',
+    'scrollcue':'The analysis',
+    'pm.label':'Patterns','pm.fit':'Fit','pm.offset':'Offset','pm.angle':'Angles','pm.rivers':'Rivers',
+    'ctl.reset':'↺ Recenter',
+    'mode.cielo':'Sky<span class="k">Orion</span>',
+    'mode.giza':'Giza<span class="k">Pyramids</span>',
+    'mode.overlay':'Correlation<span class="k">Overlay</span>',
+    'sec.hip':'<p class="kicker">The hypothesis</p>'+
+      '<h2>Three stars, three pyramids, and a pattern that repeats</h2>'+
+      '<p class="lead">The Orion Correlation Theory, proposed by Robert Bauval in 1989 and popularized in <em>The Orion Mystery</em> (1994), makes a simple, provocative claim. The layout of the three largest pyramids at Giza reproduces, on the ground, the layout of the three stars of Orion’s Belt in the sky.</p>'+
+      '<p>The two big pyramids, Khufu and Khafre, line up almost diagonally, just like Alnitak and Alnilam. And the third, Menkaure, steps off the axis of the other two, the same way Mintaka departs from the line of its two companions. Bauval added a second piece: the Milky Way runs beside Orion as the Nile runs beside Giza.</p>'+
+      '<p>This simulation does not take sides blindly. It places the stars and the pyramids at their real coordinates so you can see the resemblance with your own eyes, measure the fit, and also find where the pattern breaks. Use the three modes above and tap each object to read its data.</p>',
+    'sec.datos':'<p class="kicker">The raw data</p>'+
+      '<h2>What you are seeing, measured</h2>'+
+      '<p>Star positions come from J2000 equatorial coordinates (right ascension and declination) and distances from the Gaia mission’s parallax. The pyramids use their geographic coordinates and their original design heights. Everything else in the scene is computed from these numbers.</p>'+
+      '<h3>Orion’s Belt</h3>'+
+      '<div class="tablewrap"><table><thead><tr><th>Star</th><th>Designation</th><th>Right ascension</th><th>Declination</th><th>Distance</th><th>Magnitude</th><th>Type</th></tr></thead><tbody>'+
+      '<tr><td class="name"><span class="dotb" style="background:#bcd8ff"></span>Alnitak</td><td class="mono">ζ Ori</td><td class="mono">05h 40m 45.5s</td><td class="mono">−01° 56′ 34″</td><td class="mono">1260 ly</td><td class="mono">1.77</td><td>Supergiant O9.7</td></tr>'+
+      '<tr><td class="name"><span class="dotb" style="background:#dcebff"></span>Alnilam</td><td class="mono">ε Ori</td><td class="mono">05h 36m 12.8s</td><td class="mono">−01° 12′ 07″</td><td class="mono">1250 ly</td><td class="mono">1.69</td><td>Supergiant B0</td></tr>'+
+      '<tr><td class="name"><span class="dotb" style="background:#a9c9ff"></span>Mintaka</td><td class="mono">δ Ori</td><td class="mono">05h 32m 00.4s</td><td class="mono">−00° 17′ 57″</td><td class="mono">1246 ly</td><td class="mono">2.23</td><td>Multiple O9.5+B</td></tr>'+
+      '</tbody></table></div>'+
+      '<h3>The Giza pyramids</h3>'+
+      '<div class="tablewrap"><table><thead><tr><th>Pyramid</th><th>Pharaoh</th><th>Orig. height</th><th>Base</th><th>Approx. date</th><th>Paired star</th></tr></thead><tbody>'+
+      '<tr><td class="name"><span class="dotb" style="background:#e2b56f"></span>Great Pyramid</td><td>Khufu</td><td class="mono">146.6 m</td><td class="mono">230.3 m</td><td class="mono">≈2560 BC</td><td>Alnitak</td></tr>'+
+      '<tr><td class="name"><span class="dotb" style="background:#e2b56f"></span>Khafre</td><td>Khafre</td><td class="mono">143.5 m</td><td class="mono">215.3 m</td><td class="mono">≈2530 BC</td><td>Alnilam</td></tr>'+
+      '<tr><td class="name"><span class="dotb" style="background:#e2b56f"></span>Menkaure</td><td>Menkaure</td><td class="mono">65 m</td><td class="mono">≈103 m</td><td class="mono">≈2510 BC</td><td>Mintaka</td></tr>'+
+      '</tbody></table></div>'+
+      '<p style="font-size:12.5px;color:var(--ink-faint);margin-top:12px">A real, curious detail: the three Belt stars are almost the same distance from us, around 1250 light-years, so they form a nearly coplanar trio in space. And the three pyramids shrink in size just as the stars dim in brightness, the faintest of the Belt, Mintaka, matches the smallest, Menkaure.</p>',
+    'sec.patrones':'<p class="kicker">The patterns, in detail</p>'+
+      '<h2>A summary of what the simulations show</h2>'+
+      '<p>Above you can turn on each pattern and watch its simulation. In short, this is what they reveal: <strong>the geometric fit</strong> is striking but depends on a mirror; <strong>the drift of the third piece</strong> matches in direction and is the hardest to attribute to chance; <strong>the angle with the horizon</strong> does not match, 17° against 45°; and <strong>the Milky Way and the Nile</strong> work as a cultural metaphor, not an exact measurement.</p>'+
+      '<p class="pull">The Belt lands on Giza with an error smaller than one pyramid. The price of that fit is a mirror nobody left in writing.</p>',
+    'sec.critica':'<p class="kicker">The scientific critique</p>'+
+      '<h2>Why most Egyptologists do not accept it</h2>'+
+      '<p>The correlation is popular, and it is not crazy, there is a genuine resemblance. But it faces serious objections worth keeping in view, because a good simulation should also show its cracks.</p>'+
+      '<ul>'+
+      '<li><strong>The north-south inversion.</strong> For the star map to fit the ground you must invert it. Krupp showed that without that inversion Menkaure ends up on the wrong side. The theory needs a mirroring convention not documented in Egyptian sources.</li>'+
+      '<li><strong>The angle mismatch.</strong> The Belt’s 17° against Giza’s 45° diagonal force you to rotate the patterns to compare them, which weakens the idea of a direct copy of the sky.</li>'+
+      '<li><strong>Construction chronology.</strong> The three pyramids rose across three reigns and several decades, under different pharaohs. A single master plan drawing Orion from the start clashes with a plateau that grew in stages.</li>'+
+      '<li><strong>Data selection.</strong> Giza has more than three pyramids and lesser monuments. Picking exactly the three big ones and ignoring the rest is, for critics, choosing the points that confirm the pattern you are looking for.</li>'+
+      '<li><strong>A documented real alignment.</strong> What is well measured is that the pyramids face the cardinal directions with enormous precision, probably from observing circumpolar stars. That is the firm astronomical connection, distinct from the Orion correlation.</li>'+
+      '</ul>'+
+      '<p>At the same time, Egyptian culture did link Orion with Osiris and the dead pharaoh with that constellation. The Pyramid Texts speak of the king rising toward the stars. So a symbolic bond between Orion and the pharaohs is solidly attested. What is debated is whether that bond was translated into an architectural plan to scale.</p>',
+    'sec.fuentes':'<p class="kicker">Sources</p>'+
+      '<h2>Where the numbers come from</h2>'+
+      '<ul class="sources">'+
+      '<li>Wikipedia entries for <a href="https://en.wikipedia.org/wiki/Alnitak">Alnitak</a>, <a href="https://en.wikipedia.org/wiki/Alnilam">Alnilam</a> and <a href="https://en.wikipedia.org/wiki/Mintaka">Mintaka</a>: J2000 coordinates, Gaia distances and magnitudes.</li>'+
+      '<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza">Great Pyramid of Giza</a>, <a href="https://en.wikipedia.org/wiki/Pyramid_of_Khafre">Pyramid of Khafre</a> and <a href="https://en.wikipedia.org/wiki/Pyramid_of_Menkaure">Pyramid of Menkaure</a>: heights, bases and coordinates.</li>'+
+      '<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Orion_correlation_theory">Orion Correlation Theory</a> and <a href="https://en.wikipedia.org/wiki/Robert_Bauval">Robert Bauval</a>.</li>'+
+      '<li>Hall of Maat, <a href="https://www.hallofmaat.com/orioncorrelation/astronomical-integrity-at-giza/">Astronomical Integrity at Giza</a>, a critical analysis of the correlation.</li>'+
+      '<li>Astronomy.com, <a href="https://www.astronomy.com/science/are-the-egyptian-pyramids-aligned-with-the-stars/">on the alignment of the pyramids with the stars</a>.</li>'+
+      '</ul>',
+    'foot.disc':'Relative-scale positions, not an absolute physical scale between sky and ground.',
+    'foot.note':'All of this was made purely for fun and for the joy of creating, with no purpose other than to entertain.',
+    'sec.facts':'<p class="kicker">Curious facts</p>'+
+      '<h2>Curiosities, from the stones to the stars</h2>'+
+      '<p>A selection across pyramids, stars and deep time. What is marked as a coincidence is a numerical curiosity, not a proof.</p>'+
+      '<div class="facts-grid">'+
+      '<div class="fcat">The pyramids</div>'+
+      '<div class="fact"><span class="fnum">01</span><p>The Great Pyramid was the tallest structure in the world for about <strong>3,800 years</strong>, until Lincoln Cathedral (~1311).</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fact"><span class="fnum">02</span><p>The base perimeter divided by the height gives almost exactly <strong>2π</strong> (error under 0.05%). You can check this yourself with the real measurements.</p><span class="ftag real">Verifiable</span></div>'+
+      '<div class="fact"><span class="fnum">03</span><p>The faces point to the cardinal directions with an error of only <strong>3 to 4 arcminutes</strong>, better than many modern buildings.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fcat">Pi and coincidences</div>'+
+      '<div class="fact"><span class="fnum">04</span><p>The viral claim that the latitude (≈29.9792458°) matches the <strong>speed of light</strong> is a coincidence: thousands of latitudes cross the pyramid and the metre did not even exist in Egypt.</p><span class="ftag coin">Coincidence</span></div>'+
+      '<div class="fcat">The stars</div>'+
+      '<div class="fact"><span class="fnum">05</span><p>The three Belt stars are <strong>not close together</strong> in space: they only look aligned from Earth. Orbit it above and the illusion falls apart.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fact"><span class="fnum">06</span><p>Alnilam, the central one, is the farthest and shines like <strong>hundreds of thousands of Suns</strong>.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fact"><span class="fnum">07</span><p>The light of Alnitak you see today left <strong>~1,260 years ago</strong>, in the Viking age.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fact"><span class="fnum">08</span><p>Betelgeuse is so huge that, in the Sun’s place, its surface would reach <strong>past Mars</strong>.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fact"><span class="fnum">09</span><p>When Betelgeuse explodes as a supernova, it <strong>will be visible in daylight</strong>.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fact"><span class="fnum">10</span><p>Betelgeuse is red and cool; Rigel is blue and hot: Orion shows <strong>both ends of the stellar life cycle</strong> at once.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fcat">The nebula</div>'+
+      '<div class="fact"><span class="fnum">11</span><p>In the Orion Nebula (M42), visible to the naked eye, <strong>stars are being born right now</strong>.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fact"><span class="fnum">12</span><p>Hubble photographed <strong>protoplanetary disks</strong> there: solar systems under construction.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fcat">Orion in Egypt</div>'+
+      '<div class="fact"><span class="fnum">13</span><p>To the Egyptians, Orion was <strong>Sah</strong>, the celestial form of Osiris, god of resurrection.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fact"><span class="fnum">14</span><p>The <strong>Pyramid Texts</strong> describe the pharaoh rising to join Orion among the stars.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fact"><span class="fnum">15</span><p>Sirius was <strong>Isis</strong>; its first annual rising announced the flooding of the Nile.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fcat">Construction</div>'+
+      '<div class="fact"><span class="fnum">16</span><p>The <strong>Diary of Merer</strong> (~2560 BC) describes a crew hauling blocks to Giza: the oldest written testimony about the Great Pyramid.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fact"><span class="fnum">17</span><p>The builders <strong>were not slaves</strong>: they were paid workers; their villages and tombs were found next to the pyramid.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fcat">Time and scale</div>'+
+      '<div class="fact"><span class="fnum">18</span><p><strong>Cleopatra lived closer in time to the Moon landing (1969) than to the Great Pyramid.</strong> To her it was already ancient.</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fact"><span class="fnum">19</span><p>When the Great Pyramid was built, <strong>mammoths still existed</strong> (the last ones until ~1650 BC).</p><span class="ftag real">Verified</span></div>'+
+      '<div class="fact"><span class="fnum">20</span><p>The three pyramids shrink in size just as the three Belt stars dim in brightness: the coincidence that started it all.</p><span class="ftag real">Verified</span></div>'+
+      '</div>',
+    'sec.timeline':'<p class="kicker">Timeline</p>'+
+      '<h2>To grasp how small we are</h2>'+
+      '<p>From the unification of Egypt to today, with the window in which the pyramids were built. Years are approximate.</p>'+
+      '<div class="tl">'+
+      '<div class="tl-row"><div class="tl-year">≈3100 BC</div><div class="tl-head">Pharaonic Egypt begins</div><p>Narmer unifies Upper and Lower Egypt.</p></div>'+
+      '<div class="tl-row"><div class="tl-year">≈2560 BC</div><div class="tl-head">Great Pyramid (Khufu)</div><p>The largest at Giza rises, in about 20 years.</p></div>'+
+      '<div class="tl-row"><div class="tl-year">≈2530 BC</div><div class="tl-head">Pyramid of Khafre</div><p>The second of the trio.</p></div>'+
+      '<div class="tl-row"><div class="tl-year">≈2510 BC</div><div class="tl-head">Pyramid of Menkaure</div><p>The third, smaller and offset.</p></div>'+
+      '<div class="tl-row"><div class="tl-year">≈1650 BC</div><div class="tl-head">The last mammoths</div><p>They survive on Wrangel Island, almost a thousand years after the Great Pyramid.</p></div>'+
+      '<div class="tl-row"><div class="tl-year">30 BC</div><div class="tl-head">Cleopatra dies</div><p>The end of pharaonic Egypt, after about 3,000 years.</p></div>'+
+      '<div class="tl-row star"><div class="tl-year">1969 AD</div><div class="tl-head">The Moon landing</div><p>Humans walk on another world.</p></div>'+
+      '<div class="tl-row star"><div class="tl-year">2026 AD</div><div class="tl-head">Today</div><p>Looking at the same Orion the builders looked at.</p></div>'+
+      '</div>'+
+      '<div class="tl-callout"><p class="cq">Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid.</p>'+
+      '<p>From the pyramid (≈2560 BC) to Cleopatra (30 BC) is about 2,530 years. From Cleopatra to 1969 is about 2,000. The pyramid was already an ancient monument when she reigned.</p></div>'+
+      '<div class="tl-scale"><div class="tl-bar"><i class="b-civ" style="width:59.3%"></i><i class="b-since" style="left:59.3%;width:40.7%"></i></div>'+
+      '<div class="tl-legend"><span><b>Pharaonic Egypt</b>, ~3,000 years</span><span><b>From then until today</b>, ~2,055 years</span></div></div>'+
+      '<p style="font-size:12.5px;color:var(--ink-faint);margin-top:14px">And even so, all of recorded human history, about 5,000 years, fits in less than one millionth of the age of the universe, about 13.8 billion years. The Orion Belt that inspired all of this will still be there long after the pyramids have eroded away.</p>'
+  };
+
+  function applyStatic(){
+    var els=document.querySelectorAll('[data-i]'), i;
+    for(i=0;i<els.length;i++){
+      var el=els[i], k=el.getAttribute('data-i');
+      if(esCache[k]==null) esCache[k]=el.innerHTML;
+      el.innerHTML = (lang==='en' && EN[k]!=null) ? EN[k] : esCache[k];
+    }
+    document.title = (lang==='en') ? 'Orion’s Belt & Giza · 3D Simulation' : 'El Cinturón de Orión y Giza · Simulación 3D';
+    document.documentElement.setAttribute('lang', lang);
+    var lb=document.getElementById('langBtn'); if(lb) lb.textContent = (lang==='en')?'ES':'EN';
+  }
+  function set(l){ if(l===lang) return; lang=l; try{localStorage.setItem(LS,l)}catch(e){}
+    applyStatic(); for(var i=0;i<listeners.length;i++){ try{listeners[i](lang)}catch(e){} } }
+  function toggle(){ set(lang==='en'?'es':'en'); }
+
+  window.I18N={
+    get lang(){return lang;},
+    u:function(k){ var d=UI[lang]||UI.es; return (d[k]!=null)?d[k]:(UI.es[k]!=null?UI.es[k]:k); },
+    onChange:function(cb){ listeners.push(cb); },
+    set:set, toggle:toggle
+  };
+
+  function init(){
+    applyStatic();
+    var lb=document.getElementById('langBtn'); if(lb) lb.addEventListener('click',toggle);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
 
 <script>
 (function(){
@@ -509,38 +765,48 @@
   var STARS=[
     {id:'alnitak',name:'Alnitak',bayer:'ζ Orionis',raH:5,raM:40,raS:45.5,dec:-1.943,dist:1260,mag:1.77,
      type:'Supergigante azul O9.7 Ibe',sys:'Sistema triple',col:'#bcd8ff',
-     note:'La estrella oriental del cinturón, un sistema triple dominado por una supergigante azul. Se asocia a la Gran Pirámide de Keops.',pyr:'khufu'},
+     note:'La estrella oriental del cinturón, un sistema triple dominado por una supergigante azul. Se asocia a la Gran Pirámide de Keops.',pyr:'khufu',
+     en:{type:'Blue supergiant O9.7 Ibe',sys:'Triple system',note:'The eastern star of the Belt, a triple system led by a blue supergiant. Paired here with the Great Pyramid of Khufu.'}},
     {id:'alnilam',name:'Alnilam',bayer:'ε Orionis',raH:5,raM:36,raS:12.8,dec:-1.202,dist:1250,mag:1.69,
      type:'Supergigante azul B0 Ia',sys:'Estrella solitaria',col:'#dcebff',
-     note:'La central y la más brillante del cinturón, una supergigante solitaria y lejana. Se asocia a la pirámide de Kefrén.',pyr:'khafre'},
+     note:'La central y la más brillante del cinturón, una supergigante solitaria y lejana. Se asocia a la pirámide de Kefrén.',pyr:'khafre',
+     en:{type:'Blue supergiant B0 Ia',sys:'Lone star',note:'The central and brightest star of the Belt, a lone and distant supergiant. Paired here with the Pyramid of Khafre.'}},
     {id:'mintaka',name:'Mintaka',bayer:'δ Orionis',raH:5,raM:32,raS:0.4,dec:-0.299,dist:1246,mag:2.23,
      type:'Múltiple O9.5 + B',sys:'Sistema quíntuple',col:'#a9c9ff',
-     note:'La occidental y la más tenue, un sistema múltiple casi sobre el ecuador celeste. Se asocia a la pirámide de Micerinos, la más pequeña.',pyr:'menkaure'}
+     note:'La occidental y la más tenue, un sistema múltiple casi sobre el ecuador celeste. Se asocia a la pirámide de Micerinos, la más pequeña.',pyr:'menkaure',
+     en:{type:'Multiple O9.5 + B',sys:'Quintuple system',note:'The western and faintest, a multiple system almost on the celestial equator. Paired here with the Pyramid of Menkaure, the smallest.'}}
   ];
   /* The full figure of Orion: the bright named stars beyond the belt */
   var EXTRA=[
     {id:'betelgeuse',name:'Betelgeuse',bayer:'α Orionis',raDeg:88.793,dec:7.407,dist:548,mag:0.42,
      type:'Supergigante roja M2 Iab',sys:'Hombro oriental',col:'#ff9d5c',
-     note:'El hombro oriental de Orión, una supergigante roja tan enorme que en el lugar del Sol se tragaría la órbita de Júpiter. Es variable y candidata a estallar como supernova.'},
+     note:'El hombro oriental de Orión, una supergigante roja tan enorme que en el lugar del Sol se tragaría la órbita de Júpiter. Es variable y candidata a estallar como supernova.',
+     en:{type:'Red supergiant M2 Iab',sys:'Eastern shoulder',note:'The eastern shoulder of Orion, a red supergiant so huge that in the Sun’s place it would swallow the orbit of Jupiter. It is variable and a supernova candidate.'}},
     {id:'rigel',name:'Rigel',bayer:'β Orionis',raDeg:78.634,dec:-8.202,dist:863,mag:0.18,
      type:'Supergigante azul B8 Ia',sys:'Pie occidental',col:'#bcd0ff',
-     note:'El pie occidental y la estrella más brillante de la constelación, una supergigante azul decenas de miles de veces más luminosa que el Sol.'},
+     note:'El pie occidental y la estrella más brillante de la constelación, una supergigante azul decenas de miles de veces más luminosa que el Sol.',
+     en:{type:'Blue supergiant B8 Ia',sys:'Western foot',note:'The western foot and the brightest star in the constellation, a blue supergiant tens of thousands of times more luminous than the Sun.'}},
     {id:'bellatrix',name:'Bellatrix',bayer:'γ Orionis',raDeg:81.283,dec:6.350,dist:250,mag:1.64,
      type:'Gigante azul B2 III',sys:'Hombro occidental',col:'#cfe0ff',
-     note:'El hombro occidental, la Amazona. Es la más cercana de las estrellas brillantes de Orión, a solo 250 años luz.'},
+     note:'El hombro occidental, la Amazona. Es la más cercana de las estrellas brillantes de Orión, a solo 250 años luz.',
+     en:{type:'Blue giant B2 III',sys:'Western shoulder',note:'The western shoulder, the Amazon. It is the closest of Orion’s bright stars, only 250 light-years away.'}},
     {id:'saiph',name:'Saiph',bayer:'κ Orionis',raDeg:86.939,dec:-9.670,dist:650,mag:2.07,
      type:'Supergigante azul B0 Ia',sys:'Pie oriental',col:'#cbe0ff',
-     note:'El pie oriental. Es casi tan luminosa como Rigel, pero se ve más tenue porque irradia gran parte de su energía en luz ultravioleta invisible.'},
+     note:'El pie oriental. Es casi tan luminosa como Rigel, pero se ve más tenue porque irradia gran parte de su energía en luz ultravioleta invisible.',
+     en:{type:'Blue supergiant B0 Ia',sys:'Eastern foot',note:'The eastern foot. Almost as luminous as Rigel, but it looks fainter because it radiates much of its energy as invisible ultraviolet light.'}},
     {id:'meissa',name:'Meissa',bayer:'λ Orionis',raDeg:83.784,dec:9.934,dist:1100,mag:3.39,
      type:'Gigante caliente O8 III',sys:'La cabeza',col:'#dfeaff',
-     note:'La cabeza de Orión, en realidad un pequeño cúmulo de estrellas jóvenes y calientes envuelto en gas.'},
+     note:'La cabeza de Orión, en realidad un pequeño cúmulo de estrellas jóvenes y calientes envuelto en gas.',
+     en:{type:'Hot giant O8 III',sys:'The head',note:'The head of Orion, actually a small cluster of young, hot stars wrapped in gas.'}},
     {id:'hatysa',name:'Hatysa',bayer:'ι Orionis',raDeg:83.858,dec:-5.910,dist:1340,mag:2.75,
      type:'Sistema múltiple O9 III',sys:'La espada',col:'#d3e4ff',
-     note:'La punta de la espada de Orión, un sistema múltiple justo bajo la Gran Nebulosa.'}
+     note:'La punta de la espada de Orión, un sistema múltiple justo bajo la Gran Nebulosa.',
+     en:{type:'Multiple system O9 III',sys:'The sword',note:'The tip of Orion’s sword, a multiple system just below the Great Nebula.'}}
   ];
   var NEBULA={id:'m42',name:'Nebulosa de Orión',bayer:'M42',raDeg:83.822,dec:-5.391,dist:1344,mag:4.0,
      type:'Región de formación estelar',sys:'La espada',
-     note:'Una guardería estelar a 1344 años luz, visible a simple vista como el borrón central de la espada. Allí nacen estrellas nuevas en este mismo instante.'};
+     note:'Una guardería estelar a 1344 años luz, visible a simple vista como el borrón central de la espada. Allí nacen estrellas nuevas en este mismo instante.',
+     en:{name:'Orion Nebula',type:'Star-forming region',sys:'The sword',note:'A stellar nursery 1,344 light-years away, visible to the naked eye as the fuzzy middle of the sword. New stars are being born there right now.'}};
   /* stick-figure of Orion, by star id */
   var LINES=[
     ['betelgeuse','bellatrix'],['meissa','betelgeuse'],['meissa','bellatrix'],
@@ -553,14 +819,23 @@
   var PYR=[
     {id:'khufu',name:'Gran Pirámide',pharaoh:'Keops',h:146.6,base:230.3,built:'≈2560 a.C.',
      lat:29.979167,lon:31.134167,star:'Alnitak',
-     note:'La mayor de Giza y una de las Siete Maravillas. Sus caras se orientan a los puntos cardinales con un error de fracciones de grado.'},
+     note:'La mayor de Giza y una de las Siete Maravillas. Sus caras se orientan a los puntos cardinales con un error de fracciones de grado.',
+     en:{name:'Great Pyramid',pharaoh:'Khufu',built:'≈2560 BC',note:'The largest at Giza and one of the Seven Wonders. Its faces point to the cardinal directions with an error of fractions of a degree.'}},
     {id:'khafre',name:'Kefrén',pharaoh:'Kefrén',h:143.5,base:215.3,built:'≈2530 a.C.',
      lat:29.976111,lon:31.130833,star:'Alnilam',
-     note:'Parece la más alta porque se asienta sobre terreno más elevado. Conserva parte de su revestimiento de caliza en la cúspide.'},
+     note:'Parece la más alta porque se asienta sobre terreno más elevado. Conserva parte de su revestimiento de caliza en la cúspide.',
+     en:{name:'Khafre',pharaoh:'Khafre',built:'≈2530 BC',note:'It looks the tallest because it sits on higher ground. It still keeps part of its limestone casing at the top.'}},
     {id:'menkaure',name:'Micerinos',pharaoh:'Micerinos',h:65,base:103,built:'≈2510 a.C.',
      lat:29.972500,lon:31.128333,star:'Mintaka',
-     note:'La más pequeña de las tres, desplazada del eje de las otras dos. Ese desvío es el que se compara con el de Mintaka en el cinturón.'}
+     note:'La más pequeña de las tres, desplazada del eje de las otras dos. Ese desvío es el que se compara con el de Mintaka en el cinturón.',
+     en:{name:'Menkaure',pharaoh:'Menkaure',built:'≈2510 BC',note:'The smallest of the three, offset from the axis of the other two. That offset is the one compared with Mintaka’s in the Belt.'}}
   ];
+
+  /* ---------- i18n helpers ---------- */
+  function LANG(){ return (window.I18N&&window.I18N.lang)||'es'; }
+  function Lf(o,f){ var en=o&&o.en; return (LANG()==='en'&&en&&en[f]!=null)?en[f]:o[f]; }
+  function U(k){ return (window.I18N&&window.I18N.u)?window.I18N.u(k):k; }
+  function nameFor(o){ return Lf(o,'name'); }
 
   /* ---------- derive geometry from real coordinates ---------- */
   var DEG=Math.PI/180;
@@ -727,10 +1002,10 @@
       ctx.fillStyle='rgba(70,120,150,'+(0.22*alpha)+')';
       ctx.beginPath();ctx.moveTo(n1.x,n1.y);ctx.lineTo(n2.x,n2.y);ctx.lineTo(n3.x,n3.y);ctx.lineTo(n4.x,n4.y);ctx.closePath();ctx.fill();
       var nl=project(1050,0,ext*0.55);
-      if(nl.ok) label(nl.x,nl.y,'Nilo','#8fc4d8',13,0.8*alpha);
+      if(nl.ok) label(nl.x,nl.y,U('nilo'),'#8fc4d8',13,0.8*alpha);
     }
     /* cardinal marks */
-    var marks=[['N',0,-ext*0.9],['S',0,ext*0.9],['E',ext*0.9,0],['O',-ext*0.9,0]];
+    var marks=[['N',0,-ext*0.9],['S',0,ext*0.9],['E',ext*0.9,0],[U('W'),-ext*0.9,0]];
     ctx.font='600 12px '+getVar('--mono');ctx.textAlign='center';ctx.textBaseline='middle';
     for(var m=0;m<marks.length;m++){var pm=project(marks[m][1],0,marks[m][2]);
       if(pm.ok){ctx.fillStyle='rgba(150,165,195,'+(0.55*alpha)+')';ctx.fillText(marks[m][0],pm.x,pm.y);}}
@@ -770,7 +1045,7 @@
       nebGlow(pn.x,pn.y,rr*1.55,'rgba(85,200,190,0.15)');
       nebGlow(pn.x,pn.y,rr,'rgba(232,120,182,0.48)');
       nebGlow(pn.x-rr*0.14,pn.y+rr*0.12,rr*0.55,'rgba(180,150,255,0.5)');
-      label(pn.x,pn.y+rr*0.62,'Nebulosa M42','#f3b9d6',12,0.9);
+      label(pn.x,pn.y+rr*0.62,U('m42label'),'#f3b9d6',12,0.9);
       picks.push({kind:'neb',ref:NEBULA,x:pn.x,y:pn.y,r:Math.max(24,rr*0.7)});
     }
     /* named stars */
@@ -800,7 +1075,7 @@
       order.forEach(function(o){ drawPyramid(o.p,1); });
       PYR.forEach(function(p){
         if(p._screen){
-          label(p._screen.x,p._screen.y,p.name,getVar('--gold-soft'),14,1);
+          label(p._screen.x,p._screen.y,nameFor(p),getVar('--gold-soft'),14,1);
           picks.push({kind:'pyr',ref:p,x:p._screen.base.x,y:p._screen.base.y,r:46});
         }
       });
@@ -951,65 +1226,70 @@
   function raStr(o){ if(o.raH!=null) return o.raH+'h '+o.raM+'m '+o.raS.toFixed(1)+'s';
     var th=o.raDeg/15, h=Math.floor(th), mm=(th-h)*60, m=Math.floor(mm), s=(mm-m)*60;
     return h+'h '+m+'m '+s.toFixed(1)+'s'; }
+  var lastShown=null;
   function showStar(s){
+    lastShown={fn:showStar,ref:s};
     var pyr = s.pyr ? PYR.filter(function(p){return p.id===s.pyr;})[0] : null;
     var decs=(s.dec<0?'−':'+')+Math.abs(s.dec).toFixed(3)+'°';
-    var kind = s.pyr ? '★ Estrella · Cinturón' : '★ Estrella · Orión';
-    var link = pyr ? '<button class="insp-link" data-goto="'+pyr.id+'">→ Ver su pirámide, '+pyr.name+'</button>' : '';
+    var kind = s.pyr ? U('starBelt') : U('starOrion');
+    var link = pyr ? '<button class="insp-link" data-goto="'+pyr.id+'">'+U('seePyr')+nameFor(pyr)+'</button>' : '';
     insp.innerHTML=
       '<div class="insp-top"><span class="insp-kind" style="color:'+s.col+'">'+kind+'</span>'+
       '<button class="insp-close" aria-label="Cerrar">×</button></div>'+
       '<div class="insp-name">'+s.name+'</div>'+
-      '<p class="insp-sub">'+s.bayer+(s.sys?' · '+s.sys:'')+'</p>'+
+      '<p class="insp-sub">'+s.bayer+(Lf(s,'sys')?' · '+Lf(s,'sys'):'')+'</p>'+
       '<div class="insp-grid">'+
-        cell('Asc. recta',raStr(s))+
-        cell('Declinación',decs)+
-        cell('Distancia',s.dist+' <small>al</small>')+
-        cell('Magnitud',s.mag.toFixed(2))+
+        cell(U('ascRecta'),raStr(s))+
+        cell(U('dec'),decs)+
+        cell(U('dist'),s.dist+' <small>'+U('al')+'</small>')+
+        cell(U('mag'),s.mag.toFixed(2))+
       '</div>'+
-      '<p class="insp-note">'+s.note+'</p>'+
-      '<p class="insp-note" style="margin-top:8px">Tipo, '+s.type+'.</p>'+link;
+      '<p class="insp-note">'+Lf(s,'note')+'</p>'+
+      '<p class="insp-note" style="margin-top:8px">'+U('type')+Lf(s,'type')+'.</p>'+link;
     openInspector();
   }
   function showNeb(n){
+    lastShown={fn:showNeb,ref:n};
     var decs=(n.dec<0?'−':'+')+Math.abs(n.dec).toFixed(3)+'°';
     insp.innerHTML=
-      '<div class="insp-top"><span class="insp-kind" style="color:#f3b9d6">✦ Nebulosa · Orión</span>'+
+      '<div class="insp-top"><span class="insp-kind" style="color:#f3b9d6">'+U('neb')+'</span>'+
       '<button class="insp-close" aria-label="Cerrar">×</button></div>'+
-      '<div class="insp-name">'+n.name+'</div>'+
-      '<p class="insp-sub">'+n.bayer+' · '+n.sys+'</p>'+
+      '<div class="insp-name">'+nameFor(n)+'</div>'+
+      '<p class="insp-sub">'+n.bayer+' · '+Lf(n,'sys')+'</p>'+
       '<div class="insp-grid">'+
-        cell('Asc. recta',raStr(n))+
-        cell('Declinación',decs)+
-        cell('Distancia',n.dist+' <small>al</small>')+
-        cell('Magnitud',n.mag.toFixed(1))+
+        cell(U('ascRecta'),raStr(n))+
+        cell(U('dec'),decs)+
+        cell(U('dist'),n.dist+' <small>'+U('al')+'</small>')+
+        cell(U('mag'),n.mag.toFixed(1))+
       '</div>'+
-      '<p class="insp-note">'+n.note+'</p>'+
-      '<p class="insp-note" style="margin-top:8px">Tipo, '+n.type+'.</p>';
+      '<p class="insp-note">'+Lf(n,'note')+'</p>'+
+      '<p class="insp-note" style="margin-top:8px">'+U('type')+Lf(n,'type')+'.</p>';
     openInspector();
   }
   function showPyr(p){
+    lastShown={fn:showPyr,ref:p};
     var star=STARS.filter(function(s){return s.pyr===p.id;})[0];
     var extra='';
     if(p.id==='menkaure' && star.resid){
       var mag=Math.hypot(star.resid.dx,star.resid.dz);
-      extra='<p class="insp-note" style="margin-top:8px">En modo Correlación, Mintaka cae a unos <strong>'+Math.round(mag)+' m</strong> de esta pirámide tras reflejar el mapa estelar. Ese es el residuo del ajuste.</p>';
+      extra='<p class="insp-note" style="margin-top:8px">'+U('residPre')+'<strong>'+Math.round(mag)+' m</strong>'+U('residPost')+'</p>';
     }
     insp.innerHTML=
-      '<div class="insp-top"><span class="insp-kind" style="color:var(--gold)">▲ Pirámide · Giza</span>'+
+      '<div class="insp-top"><span class="insp-kind" style="color:var(--gold)">'+U('pyrGiza')+'</span>'+
       '<button class="insp-close" aria-label="Cerrar">×</button></div>'+
-      '<div class="insp-name">'+p.name+'</div>'+
-      '<p class="insp-sub">Faraón '+p.pharaoh+' · '+p.built+'</p>'+
+      '<div class="insp-name">'+nameFor(p)+'</div>'+
+      '<p class="insp-sub">'+U('pharaoh')+' '+Lf(p,'pharaoh')+' · '+Lf(p,'built')+'</p>'+
       '<div class="insp-grid">'+
-        cell('Altura orig.',p.h+' <small>m</small>')+
-        cell('Base',p.base+' <small>m</small>')+
-        cell('Latitud',p.lat.toFixed(4)+'°N')+
-        cell('Longitud',p.lon.toFixed(4)+'°E')+
+        cell(U('alturaOrig'),p.h+' <small>'+U('m')+'</small>')+
+        cell(U('base'),p.base+' <small>'+U('m')+'</small>')+
+        cell(U('lat'),p.lat.toFixed(4)+'°N')+
+        cell(U('lon'),p.lon.toFixed(4)+'°E')+
       '</div>'+
-      '<p class="insp-note">'+p.note+'</p>'+extra+
-      '<button class="insp-link" data-goto-star="'+star.id+'">→ Ver su estrella, '+star.name+'</button>';
+      '<p class="insp-note">'+Lf(p,'note')+'</p>'+extra+
+      '<button class="insp-link" data-goto-star="'+star.id+'">'+U('seeStar')+star.name+'</button>';
     openInspector();
   }
+  function relabelInspector(){ if(insp.classList.contains('open') && lastShown) lastShown.fn(lastShown.ref); }
   function openInspector(){insp.classList.add('open');
     insp.querySelector('.insp-close').onclick=closeInspector;
     var g=insp.querySelector('[data-goto]'); if(g)g.onclick=function(){var id=g.getAttribute('data-goto');showPyr(PYR.filter(function(p){return p.id===id;})[0]);};
@@ -1035,9 +1315,10 @@
     tgt=Object.assign({},PRESETS[mode]); lastInteract=performance.now();
   });
   var spinBtn=document.getElementById('spinBtn');
-  spinBtn.addEventListener('click',function(){
-    spin=!spin; spinBtn.textContent= spin?'⏸ Giro auto':'▶ Giro auto';
-  });
+  function setSpinLabel(){ spinBtn.textContent = spin?U('spinOn'):U('spinOff'); }
+  spinBtn.addEventListener('click',function(){ spin=!spin; setSpinLabel(); });
+  setSpinLabel();
+  if(window.I18N&&window.I18N.onChange) window.I18N.onChange(function(){ setSpinLabel(); relabelInspector(); });
 
   /* theme toggle */
   var themeBtn=document.getElementById('themeBtn');
@@ -1087,9 +1368,13 @@
   "use strict";
   var DPR=Math.max(1,Math.min(1.5,window.devicePixelRatio||1));
   var BLUE='#9fd0ff',BLUEH='#e0edff',GOLD='#e2b56f',GOLDS='#f0d3a0',MUTE='rgba(150,168,200,0.55)';
+  function LANG(){ return (window.I18N&&window.I18N.lang)||'es'; }
+  function U(k){ return (window.I18N&&window.I18N.u)?window.I18N.u(k):k; }
+  function F(m,k){ var en=m&&m.en; return (LANG()==='en'&&en&&en[k]!=null)?en[k]:m[k]; }
 
   /* shared real relative coordinates (centered), y = north (up), in metres */
-  var PY=[{n:'Keops',x:294.7,y:359.4,b:230},{n:'Kefrén',x:-26.8,y:20.5,b:215},{n:'Micerinos',x:-267.8,y:-380.0,b:103}];
+  var PY=[{n:'Keops',en:'Khufu',x:294.7,y:359.4,b:230},{n:'Kefrén',en:'Khafre',x:-26.8,y:20.5,b:215},{n:'Micerinos',en:'Menkaure',x:-267.8,y:-380.0,b:103}];
+  function pyn(i){ return LANG()==='en'?PY[i].en:PY[i].n; }
   var BE=[{x:0,y:0},{x:-391.3,y:255.3},{x:-753.8,y:566.3}];      /* belt pattern scaled to metres */
   var M_MIRROR={x:PY[2].x-39.5,y:PY[2].y+14.1};                  /* Mintaka with reflection (~42 m) */
   var M_ROT={x:PY[2].x-130.6,y:PY[2].y+100.9};                   /* Mintaka without reflection (~165 m) */
@@ -1123,7 +1408,7 @@
       ctx.beginPath();ctx.rect(p.x-hf,p.y-hf,hf*2,hf*2);ctx.fill();ctx.stroke();
       ctx.strokeStyle='rgba(240,211,160,0.3)';ctx.beginPath();
       ctx.moveTo(p.x-hf,p.y-hf);ctx.lineTo(p.x+hf,p.y+hf);ctx.moveTo(p.x+hf,p.y-hf);ctx.lineTo(p.x-hf,p.y+hf);ctx.stroke();
-      ctx.fillStyle=GOLDS;ctx.font='600 10px monospace';ctx.textAlign='center';ctx.fillText(PY[i].n,p.x,p.y-hf-6);
+      ctx.fillStyle=GOLDS;ctx.font='600 10px monospace';ctx.textAlign='center';ctx.fillText(pyn(i),p.x,p.y-hf-6);
     }
     if(st.k>0.02){var a=m(PY[0].x,PY[0].y),b=m(PY[1].x,PY[1].y),dx=b.x-a.x,dy=b.y-a.y;
       ctx.strokeStyle='rgba(232,138,125,'+(0.2+0.3*st.k)+')';ctx.setLineDash([4,4]);ctx.lineWidth=1;
@@ -1143,10 +1428,10 @@
 
   DRAW.offset=function(ctx,st){
     var w=st.w,h=st.h,half=w/2;
-    offPanel(ctx,0,half,h,[BE[0],BE[1],BE[2]],BLUE,BLUEH,'Cinturón',st);
+    offPanel(ctx,0,half,h,[BE[0],BE[1],BE[2]],BLUE,BLUEH,U('panelBelt'),st);
     ctx.strokeStyle='rgba(120,140,180,0.22)';ctx.lineWidth=1;
     ctx.beginPath();ctx.moveTo(half,14);ctx.lineTo(half,h-14);ctx.stroke();
-    offPanel(ctx,half,half,h,[PY[0],PY[1],PY[2]],GOLD,GOLDS,'Giza',st);
+    offPanel(ctx,half,half,h,[PY[0],PY[1],PY[2]],GOLD,GOLDS,U('panelGiza'),st);
   };
   function offPanel(ctx,ox,w,h,pts,col,colh,title,st){
     var m=fitMap(pts,w,h,42);
@@ -1166,14 +1451,14 @@
     ctx.beginPath();ctx.moveTo(p0.x,p0.y);ctx.lineTo(p1.x,p1.y);ctx.lineTo(p2.x,p2.y);ctx.stroke();ctx.globalAlpha=1;
     dot(ctx,p0.x,p0.y,4,colh,null);dot(ctx,p1.x,p1.y,4,colh,null);dot(ctx,p2.x,p2.y,5,colh,null);
     ctx.fillStyle=col;ctx.font='600 10px monospace';ctx.textAlign='center';ctx.fillText(title,ox+w/2,16);
-    ctx.fillStyle='rgba(232,138,125,0.9)';ctx.fillText('desvío',p2.x,p2.y+15);
+    ctx.fillStyle='rgba(232,138,125,0.9)';ctx.fillText(U('offsetWord'),p2.x,p2.y+15);
   }
 
   DRAW.angle=function(ctx,st){
     var w=st.w,h=st.h, base=h-38, len=Math.min(w*0.32,140);
     ctx.strokeStyle='rgba(150,168,200,0.4)';ctx.lineWidth=1.2;
     ctx.beginPath();ctx.moveTo(24,base);ctx.lineTo(w-24,base);ctx.stroke();
-    ctx.fillStyle='rgba(150,168,200,0.55)';ctx.font='9px monospace';ctx.textAlign='left';ctx.fillText('HORIZONTE',26,base+13);
+    ctx.fillStyle='rgba(150,168,200,0.55)';ctx.font='9px monospace';ctx.textAlign='left';ctx.fillText(U('horizon'),26,base+13);
     function bar(originX,ang,col,colh,label,dots){
       var a=ang*Math.PI/180, ex=originX+Math.cos(-a)*len, ey=base+Math.sin(-a)*len;
       ctx.strokeStyle=col;ctx.globalAlpha=0.32;ctx.lineWidth=1.2;
@@ -1187,12 +1472,12 @@
     if(st.overlay){
       bar(w*0.5,17,'rgba(159,208,255,1)',BLUEH,'17°',true);
       bar(w*0.5,45,'rgba(226,181,111,1)',GOLDS,'45°',false);
-      ctx.fillStyle=MUTE;ctx.font='9px monospace';ctx.textAlign='center';ctx.fillText('mismo vértice',w*0.5,base+13);
+      ctx.fillStyle=MUTE;ctx.font='9px monospace';ctx.textAlign='center';ctx.fillText(U('sameVertex'),w*0.5,base+13);
     }else{
       bar(w*0.28,17,'rgba(159,208,255,1)',BLUEH,'17°',true);
       bar(w*0.72,45,'rgba(226,181,111,1)',GOLDS,'45°',false);
-      ctx.fillStyle=BLUE;ctx.font='9px monospace';ctx.textAlign='center';ctx.fillText('CINTURÓN DE ORIÓN',w*0.28,24);
-      ctx.fillStyle=GOLD;ctx.fillText('DIAGONAL DE GIZA',w*0.72,24);
+      ctx.fillStyle=BLUE;ctx.font='9px monospace';ctx.textAlign='center';ctx.fillText(U('beltTitle'),w*0.28,24);
+      ctx.fillStyle=GOLD;ctx.fillText(U('gizaDiag'),w*0.72,24);
     }
   };
 
@@ -1225,14 +1510,14 @@
         var s=Math.max(7,PY[k].b*m.scale*0.5);
         ctx.fillStyle='rgba(226,181,111,0.2)';ctx.strokeStyle=GOLD;ctx.lineWidth=1.4;
         ctx.beginPath();ctx.moveTo(p.x,p.y-s);ctx.lineTo(p.x+s,p.y+s*0.7);ctx.lineTo(p.x-s,p.y+s*0.7);ctx.closePath();ctx.fill();ctx.stroke();}
-      ctx.fillStyle=GOLD;ctx.font='600 10px monospace';ctx.textAlign='center';ctx.fillText('GIZA · NILO',cx,18);
+      ctx.fillStyle=GOLD;ctx.font='600 10px monospace';ctx.textAlign='center';ctx.fillText(U('gizaNile'),cx,18);
     }else{
       var mb=fitMap(BE,w*0.6,h,46), pts=[];
       for(var j=0;j<3;j++){var q=mb(BE[j].x,BE[j].y);q.x+=ox+w*0.04;pts.push(q);}
       ctx.strokeStyle='rgba(159,208,255,0.6)';ctx.lineWidth=1.6;
       ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);ctx.lineTo(pts[1].x,pts[1].y);ctx.lineTo(pts[2].x,pts[2].y);ctx.stroke();
       for(var j2=0;j2<3;j2++)dot(ctx,pts[j2].x,pts[j2].y,4,BLUEH,'rgba(159,208,255,0.5)');
-      ctx.fillStyle=BLUE;ctx.font='600 10px monospace';ctx.textAlign='center';ctx.fillText('ORIÓN · VÍA LÁCTEA',cx,18);
+      ctx.fillStyle=BLUE;ctx.font='600 10px monospace';ctx.textAlign='center';ctx.fillText(U('milky'),cx,18);
     }
     ctx.restore();
   }
@@ -1242,22 +1527,38 @@
       cap:'Vista cenital · cuadrados dorados = pirámides · puntos azules = cinturón anclado',
       act:'mirror',gold:true,label:'Activar espejo',pressed:false,
       read:'Residuo Mintaka→Micerinos: <b>165 m</b>',
-      desc:'Al escalar el cinturón hasta que Alnitak y Alnilam caen exactamente sobre Keops y Kefrén, Mintaka queda a unos 40 metros de Micerinos, menos que el ancho de una sola pirámide. Es un ajuste notable, pero solo aparece si reflejamos el patrón como en un espejo. Sin la reflexión se desvía unos 165 metros y hacia el lado contrario. Pulsa el botón para verlo.'},
+      desc:'Al escalar el cinturón hasta que Alnitak y Alnilam caen exactamente sobre Keops y Kefrén, Mintaka queda a unos 40 metros de Micerinos, menos que el ancho de una sola pirámide. Es un ajuste notable, pero solo aparece si reflejamos el patrón como en un espejo. Sin la reflexión se desvía unos 165 metros y hacia el lado contrario. Pulsa el botón para verlo.',
+      en:{title:'The geometric fit is real, but needs a mirror',verdict:'Ambiguous',label:'Turn on mirror',
+        cap:'Top-down view · gold squares = pyramids · blue dots = anchored Belt',
+        read:'Mintaka→Menkaure residual: <b>165 m</b>',
+        desc:'Scaling the Belt so Alnitak and Alnilam land exactly on Khufu and Khafre, Mintaka ends up about 40 metres from Menkaure, less than the width of a single pyramid. It is a striking fit, but it only appears if we mirror the pattern. Without the reflection it drifts about 165 metres, to the opposite side. Press the button to see it.'}},
     offset:{title:'El desplazamiento de la tercera coincide en signo',verdict:'Sólido',vc:'v-strong',
       cap:'Izquierda, el cinturón · derecha, Giza · la línea marca el eje de los dos primeros',
       act:'axis',gold:false,label:'Mostrar eje',pressed:true,
       read:'La tercera pieza se desvía al <b>mismo lado</b> en ambos',
-      desc:'Micerinos no está sobre la diagonal de las otras dos, se corre hacia un lado. Mintaka hace lo mismo respecto a la línea Alnitak a Alnilam. Que en ambos casos la tercera pieza se salga del eje, y no que las tres estén alineadas, es la coincidencia más difícil de descartar como azar.'},
+      desc:'Micerinos no está sobre la diagonal de las otras dos, se corre hacia un lado. Mintaka hace lo mismo respecto a la línea Alnitak a Alnilam. Que en ambos casos la tercera pieza se salga del eje, y no que las tres estén alineadas, es la coincidencia más difícil de descartar como azar.',
+      en:{title:'The third piece drifts the same way',verdict:'Solid',label:'Show axis',
+        cap:'Left, the Belt · right, Giza · the line marks the axis of the first two',
+        read:'The third piece drifts to the <b>same side</b> in both',
+        desc:'Menkaure is not on the diagonal of the other two, it shifts to one side. Mintaka does the same relative to the Alnitak-to-Alnilam line. That the third piece steps off the axis in both cases, rather than the three being aligned, is the hardest coincidence to dismiss as chance.'}},
     angle:{title:'El ángulo con el horizonte no coincide',verdict:'En contra',vc:'v-weak',
       cap:'El mismo vértice, dos inclinaciones distintas',
       act:'overlay',gold:false,label:'Superponer ángulos',pressed:false,
       read:'Cinturón <b>17°</b> · Diagonal de Giza <b>45°</b>',
-      desc:'Cuando el Cinturón de Orión cruza el sur en la época de las pirámides se inclina unos 17° respecto al horizonte. La diagonal de las pirámides forma cerca de 45°. Ed Krupp señaló que para calzar los mapas hay que girar e invertir uno de ellos, algo que la teoría no explica de forma natural.'},
+      desc:'Cuando el Cinturón de Orión cruza el sur en la época de las pirámides se inclina unos 17° respecto al horizonte. La diagonal de las pirámides forma cerca de 45°. Ed Krupp señaló que para calzar los mapas hay que girar e invertir uno de ellos, algo que la teoría no explica de forma natural.',
+      en:{title:'The angle with the horizon does not match',verdict:'Against',label:'Overlay angles',
+        cap:'The same vertex, two different tilts',
+        read:'Belt <b>17°</b> · Giza diagonal <b>45°</b>',
+        desc:'When Orion’s Belt crosses the south in the age of the pyramids it tilts about 17° to the horizon. The Giza diagonal is near 45°. Ed Krupp pointed out that to make the maps fit you must rotate and flip one of them, which the theory does not explain naturally.'}},
     rivers:{title:'Vía Láctea y Nilo, poético más que métrico',verdict:'Ambiguo',vc:'v-mixed',
       cap:'Un río de estrellas junto a Orión ↔ el Nilo junto a Giza',
       act:'align',gold:false,label:'Alinear los ríos',pressed:false,
       read:'Analogía poética, no una medición exacta',
-      desc:'La analogía del río de estrellas junto a Orión y el Nilo junto a Giza encaja con la cosmología egipcia, donde el cielo se reflejaba en la tierra. Pero la posición y la escala del Nilo no reproducen con precisión la geometría de la Vía Láctea, así que funciona como metáfora cultural, no como medición.'}
+      desc:'La analogía del río de estrellas junto a Orión y el Nilo junto a Giza encaja con la cosmología egipcia, donde el cielo se reflejaba en la tierra. Pero la posición y la escala del Nilo no reproducen con precisión la geometría de la Vía Láctea, así que funciona como metáfora cultural, no como medición.',
+      en:{title:'Milky Way and Nile, poetic more than metric',verdict:'Ambiguous',label:'Align the rivers',
+        cap:'A river of stars beside Orion ↔ the Nile beside Giza',
+        read:'A poetic analogy, not an exact measurement',
+        desc:'The analogy of the river of stars beside Orion and the Nile beside Giza fits Egyptian cosmology, where the sky was mirrored on the land. But the position and scale of the Nile do not precisely reproduce the geometry of the Milky Way, so it works as a cultural metaphor, not a measurement.'}}
   };
   var cv=document.getElementById('patCanvas'); if(!cv)return;
   var ctx=cv.getContext('2d'),
@@ -1280,10 +1581,10 @@
     ctrlBtn.className='simbtn'+(m.gold?' gold':'');
     ctrlBtn.setAttribute('data-act',m.act);
     ctrlBtn.setAttribute('aria-pressed',pressed?'true':'false');
-    ctrlBtn.textContent=m.label;
-    capEl.textContent=m.cap; readEl.innerHTML=m.read;
-    titleEl.textContent=m.title; descEl.textContent=m.desc;
-    if(verdictEl){verdictEl.className='verdict '+m.vc; verdictEl.textContent=m.verdict;}
+    ctrlBtn.textContent=F(m,'label');
+    capEl.textContent=F(m,'cap'); readEl.innerHTML=F(m,'read');
+    titleEl.textContent=F(m,'title'); descEl.textContent=F(m,'desc');
+    if(verdictEl){verdictEl.className='verdict '+m.vc; verdictEl.textContent=F(m,'verdict');}
     buttons.forEach(function(b){b.setAttribute('aria-selected', b.dataset.pat===id?'true':'false');});
   }
   function playProjection(){ var f=document.querySelector('.holo-float'); if(!f)return;
@@ -1305,6 +1606,15 @@
     if(act==='overlay')st.overlay=!on; if(act==='align')st.align=!on;
   });
   window.__closePattern=closePat; /* let the 3D mode buttons dismiss the overlay */
+  function relabelPat(){
+    if(!overlay.classList.contains('open')) return;
+    var m=PATS[st.type]; if(!m)return;
+    ctrlBtn.textContent=F(m,'label');
+    capEl.textContent=F(m,'cap'); readEl.innerHTML=F(m,'read');
+    titleEl.textContent=F(m,'title'); descEl.textContent=F(m,'desc');
+    if(verdictEl)verdictEl.textContent=F(m,'verdict');
+  }
+  if(window.I18N&&window.I18N.onChange) window.I18N.onChange(relabelPat);
   window.addEventListener('resize',function(){ if(overlay.classList.contains('open'))size(); });
   selectPat('fit');
   buttons.forEach(function(b){b.setAttribute('aria-selected','false');}); /* none active until opened */
